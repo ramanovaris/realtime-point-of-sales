@@ -24,7 +24,10 @@ export async function login(
   if (!validatedFields.success) {
     return {
       status: "error",
-      errors: validatedFields.error.flatten().fieldErrors,
+      errors: {
+        ...validatedFields.error.flatten().fieldErrors,
+        _form: [],
+      },
     };
   }
 
@@ -37,7 +40,7 @@ export async function login(
 
   if (error) {
     return {
-      success: "error",
+      status: "error",
       errors: {
         ...prevState.errors,
         _form: [error.message],
