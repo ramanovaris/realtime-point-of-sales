@@ -56,8 +56,6 @@ export default function Login() {
     }
   }, [loginState]);
 
-  console.log("loginState", loginState);
-
   return (
     <Card>
       <CardHeader className="text-center">
