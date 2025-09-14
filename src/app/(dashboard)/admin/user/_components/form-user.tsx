@@ -36,7 +36,7 @@ export default function FormUser<T extends FieldValues>({
     type === "Create" ? "Register a new user" : "Make changes user here";
 
   return (
-    <DialogContent>
+    <DialogContent className="sm:max-w-[425px]">
       <Form {...form}>
         <DialogHeader>
           <DialogTitle>{type} User</DialogTitle>
