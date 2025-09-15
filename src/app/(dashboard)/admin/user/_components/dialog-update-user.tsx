@@ -7,11 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { createUser, updateUser } from "../actions";
+import { updateUser } from "../actions";
 import { Preview } from "@/types/general";
 import FormUser from "./form-user";
 import { Profile } from "@/types/auth";
-import { Key } from "lucide-react";
 import { Dialog } from "@/components/ui/dialog";
 
 export default function DialogUpdateUser({
