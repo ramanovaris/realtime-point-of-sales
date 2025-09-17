@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import DataTable from "@/components/common/data-tables";
 import DropdownAction from "@/components/common/dropdown-action";
@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Table } from "@/validations/table-validation";
 import { HEADER_TABLE_TABLE } from "@/constants/table-constant";
+import DialogCreateTable from "./dialog-create-table";
 
 export default function TableManagement() {
   const supabase = createClient();
@@ -39,9 +40,17 @@ export default function TableManagement() {
         .order("created_at");
 
       if (currentSearch) {
-        query.or(
-          `name.ilike.%${currentSearch}%,capacity.ilike.%${currentSearch}%,status.ilike.%${currentSearch}%`
-        );
+        // Cek apakah search berupa angka
+        const isNumber = !isNaN(Number(currentSearch));
+        if (isNumber) {
+          query.or(
+            `name.ilike.%${currentSearch}%,capacity.eq.${currentSearch},status.ilike.%${currentSearch}%`
+          );
+        } else {
+          query.or(
+            `name.ilike.%${currentSearch}%,status.ilike.%${currentSearch}%`
+          );
+        }
       }
 
       const result = await query;
@@ -138,6 +147,7 @@ export default function TableManagement() {
             <DialogTrigger asChild>
               <Button variant={"outline"}>Create</Button>
             </DialogTrigger>
+            <DialogCreateTable refetch={refetch} />
           </Dialog>
         </div>
       </div>
