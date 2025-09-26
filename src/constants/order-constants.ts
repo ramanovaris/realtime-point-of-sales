@@ -1,3 +1,5 @@
+import { error } from "console";
+
 export const HEADER_TABLE_ORDER = [
   "No",
   "Order ID",
@@ -5,4 +7,25 @@ export const HEADER_TABLE_ORDER = [
   "Table",
   "Status",
   "Action",
+];
+
+export const INITIAL_ORDER = {
+  customer_name: "",
+  table_id: "",
+  status: "",
+};
+
+export const INITIAL_STATE_ORDER = {
+  status: "idle",
+  error: {
+    customer_name: [],
+    table_id: [],
+    status: [],
+    _form: [],
+  },
+};
+
+export const STATUS_CREATE_ORDER = [
+  { value: "reserved", label: "Reserved" },
+  { value: "process", label: "Process" },
 ];
