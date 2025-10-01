@@ -40,7 +40,7 @@ export default function FormMenu<T extends FieldValues>({
     <DialogContent className="sm:max-w-[425px] max-h-[90vh]">
       <Form {...form}>
         <DialogHeader>
-          <DialogTitle>{type} User</DialogTitle>
+          <DialogTitle>{type} Menu</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-4">
